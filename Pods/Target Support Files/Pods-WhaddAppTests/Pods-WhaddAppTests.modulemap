@@ -1,0 +1,6 @@
+framework module Pods_WhaddAppTests {
+  umbrella header "Pods-WhaddAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
