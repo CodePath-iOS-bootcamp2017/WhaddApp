@@ -7,14 +7,15 @@ target 'WhaddApp' do
 
   # Pods for WhaddApp
   pod 'Parse'
+
   target 'WhaddAppTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
-  target 'WhaddAppUITests' do
-    inherit! :search_paths
+  #target 'WhaddAppUITests' do
+   # inherit! :search_paths
     # Pods for testing
-  end
+  #end
 
 end

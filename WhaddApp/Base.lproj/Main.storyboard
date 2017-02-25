@@ -69,11 +69,30 @@
                         <outlet property="loginButton" destination="CoK-wV-QgE" id="MHk-H8-RCU"/>
                         <outlet property="passowrdTextfield" destination="Drc-x3-mUz" id="BBP-4J-CQG"/>
                         <outlet property="signupButton" destination="SAb-R1-zcA" id="BWc-sC-M5J"/>
+                        <segue destination="nbo-gx-WPV" kind="presentation" identifier="loginSegue" id="sWW-bf-QbU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="BQo-aR-FlT">
+            <objects>
+                <viewController id="nbo-gx-WPV" customClass="ChatViewController" customModule="WhaddApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rF9-xz-eJj"/>
+                        <viewControllerLayoutGuide type="bottom" id="BOj-sR-LWU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="haV-1V-vxS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="acA-Qy-Jwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1055" y="124"/>
         </scene>
     </scenes>
 </document>

@@ -50,6 +50,7 @@ class LoginViewController: UIViewController {
                     self.present(self.alertController, animated: true, completion: nil)
                 }else{
                     print("Signup successful")
+                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 }
             })
         }
@@ -70,6 +71,7 @@ class LoginViewController: UIViewController {
                     })
                 }else{
                     print("login successful")
+                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 }
             })
         }
