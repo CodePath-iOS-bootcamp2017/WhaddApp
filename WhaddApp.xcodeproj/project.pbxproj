@@ -10,6 +10,7 @@
 		1E573A1855684127891F1F72 /* Pods_WhaddApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D932F795231F3B9FF343B124 /* Pods_WhaddApp.framework */; };
 		245CDEFE1E6019C400AAD8C4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245CDEFD1E6019C400AAD8C4 /* LoginViewController.swift */; };
 		245CDF001E602D4800AAD8C4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245CDEFF1E602D4800AAD8C4 /* ChatViewController.swift */; };
+		245CDF031E6128C400AAD8C4 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245CDF021E6128C400AAD8C4 /* ChatTableViewCell.swift */; };
 		24B8ABAC1E60184500E797F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8ABAB1E60184500E797F4 /* AppDelegate.swift */; };
 		24B8ABB11E60184500E797F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24B8ABAF1E60184500E797F4 /* Main.storyboard */; };
 		24B8ABB41E60184500E797F4 /* WhaddApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24B8ABB21E60184500E797F4 /* WhaddApp.xcdatamodeld */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		245CDEFD1E6019C400AAD8C4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		245CDEFF1E602D4800AAD8C4 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		245CDF021E6128C400AAD8C4 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		24B8ABA81E60184500E797F4 /* WhaddApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhaddApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24B8ABAB1E60184500E797F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24B8ABB01E60184500E797F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -102,6 +104,14 @@
 			name = "view controllers";
 			sourceTree = "<group>";
 		};
+		245CDF011E6128AC00AAD8C4 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				245CDF021E6128C400AAD8C4 /* ChatTableViewCell.swift */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
 		24B8AB9F1E60184400E797F4 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +137,7 @@
 		24B8ABAA1E60184500E797F4 /* WhaddApp */ = {
 			isa = PBXGroup;
 			children = (
+				245CDF011E6128AC00AAD8C4 /* views */,
 				245CDEFC1E6019B200AAD8C4 /* view controllers */,
 				24B8ABAB1E60184500E797F4 /* AppDelegate.swift */,
 				24B8ABAF1E60184500E797F4 /* Main.storyboard */,
@@ -462,6 +473,7 @@
 			files = (
 				245CDEFE1E6019C400AAD8C4 /* LoginViewController.swift in Sources */,
 				24B8ABB41E60184500E797F4 /* WhaddApp.xcdatamodeld in Sources */,
+				245CDF031E6128C400AAD8C4 /* ChatTableViewCell.swift in Sources */,
 				245CDF001E602D4800AAD8C4 /* ChatViewController.swift in Sources */,
 				24B8ABAC1E60184500E797F4 /* AppDelegate.swift in Sources */,
 			);

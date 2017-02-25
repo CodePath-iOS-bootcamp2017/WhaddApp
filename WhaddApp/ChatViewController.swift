@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import Parse
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var newMessageTextView: UITextView!
+    @IBOutlet weak var chatTableView: UITableView!
+    
+    var chat: Array<String> = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.setupNavigationBar()
+        self.setupTableView()
+        self.loadMessages()
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +28,68 @@ class ChatViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func loadMessages(){
+        let query = PFQuery(className: "Message")
+        query.order(byAscending: "createdAt")
+        query.findObjectsInBackground { (messages: [PFObject]?, error: Error?) in
+            if let chatMessages = messages{
+//                print(chatMessages)
+                for message in chatMessages{
+//                    print(message)
+                    if let text = message.object(forKey: "text") as? String{
+//                        print(text)
+                        self.chat.append(text)
+                    }else{
+                        print("text key not found")
+                    }
+                }
+                self.chatTableView.reloadData()
+            }else{
+                print(error.debugDescription)
+            }
+        }
+    }
+    
+    func setupNavigationBar(){
+        self.navigationItem.title = "Chat"
+    }
+    
+    func setupTableView(){
+        self.chatTableView.delegate = self
+        self.chatTableView.dataSource = self
+        self.chatTableView.estimatedRowHeight = 120
+        self.chatTableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
+        if !self.chat.isEmpty{
+            cell.messageLabel.text = self.chat[indexPath.row]
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if !self.chat.isEmpty{
+            return self.chat.count
+        }else{
+            return 0
+        }
+    }
+    
+    @IBAction func onComposeButtonTapped(_ sender: Any) {
+        
+        let message = PFObject(className: "Message")
+        message["text"] = self.newMessageTextView.text
+        message.saveInBackground { (success: Bool, error: Error?) in
+            if success{
+                print("new message save successfully")
+            }else{
+                print(error?.localizedDescription)
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
