@@ -79,10 +79,12 @@ class LoginViewController: UIViewController {
     
     func validateFields() -> Bool{
         if self.emailTextField.text!.isEmpty {
+            self.alertController.title = "Sorry!"
             self.alertController.message = "Username is required"
             self.present(self.alertController, animated: true, completion: nil)
             return false
         } else if self.passowrdTextfield.text!.isEmpty{
+            self.alertController.title = "Sorry!"
             self.alertController.message = "Password is required"
             self.present(self.alertController, animated: true, completion: nil)
             return false
