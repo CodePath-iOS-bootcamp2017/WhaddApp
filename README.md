@@ -14,10 +14,8 @@ The following functionalities are completed:
 - [x] User send a Chat Message.
 - [x] User can view the Chat Room
 - [x] Users can see usernames along with messages.
-
-Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
-
-1. Adding videos player for trailers
+- [x] New messages at the bottom
+- [x] user automatically taken to new messages at the bottom
 
 ## Video Walkthrough 
 
