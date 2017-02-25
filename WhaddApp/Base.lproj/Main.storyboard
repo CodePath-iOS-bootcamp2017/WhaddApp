@@ -25,14 +25,14 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m5c-XW-JIR">
                                 <rect key="frame" x="37.5" y="147" width="300" height="30"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Drc-x3-mUz">
                                 <rect key="frame" x="37.5" y="201" width="300" height="30"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CoK-wV-QgE">
                                 <rect key="frame" x="37" y="239" width="146" height="30"/>
@@ -133,22 +133,34 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat text goes here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tso-vC-wtP">
-                                                    <rect key="frame" x="8" y="13" width="127" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vSf-mk-HlY">
+                                                    <rect key="frame" x="15" y="11" width="254" height="21"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ze-ij-yLI">
+                                                            <rect key="frame" x="0.0" y="0.0" width="127" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <color key="textColor" red="0.47878939619999999" green="0.81008062930000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat text goes here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tso-vC-wtP">
+                                                            <rect key="frame" x="127" y="0.0" width="127" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tso-vC-wtP" secondAttribute="trailing" constant="10" id="6El-Sr-ZqR"/>
-                                                <constraint firstItem="tso-vC-wtP" firstAttribute="top" secondItem="Zyc-1f-U1b" secondAttribute="top" constant="13" id="A27-Bv-rNA"/>
-                                                <constraint firstItem="tso-vC-wtP" firstAttribute="leading" secondItem="Zyc-1f-U1b" secondAttribute="leading" constant="8" id="HSv-Hh-izh"/>
-                                                <constraint firstAttribute="bottom" secondItem="tso-vC-wtP" secondAttribute="bottom" constant="13" id="WhM-9q-TGH"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vSf-mk-HlY" secondAttribute="trailing" constant="10" id="2N7-CR-vGl"/>
+                                                <constraint firstItem="vSf-mk-HlY" firstAttribute="top" secondItem="Zyc-1f-U1b" secondAttribute="top" constant="11" id="9SM-SV-44G"/>
+                                                <constraint firstItem="vSf-mk-HlY" firstAttribute="leading" secondItem="Zyc-1f-U1b" secondAttribute="leading" constant="15" id="ERs-y4-cL6"/>
+                                                <constraint firstAttribute="bottom" secondItem="vSf-mk-HlY" secondAttribute="bottom" constant="11" id="kcT-Ck-1GP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="messageLabel" destination="tso-vC-wtP" id="iZx-f8-hHK"/>
+                                            <outlet property="usernameLabel" destination="8Ze-ij-yLI" id="zP2-zP-jvS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

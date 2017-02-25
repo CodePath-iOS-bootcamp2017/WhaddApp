@@ -14,13 +14,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var newMessageTextView: UITextView!
     @IBOutlet weak var chatTableView: UITableView!
     
-    var chat: Array<String> = []
+    var chat: Array<PFObject> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigationBar()
         self.setupTableView()
-        self.loadMessages()
+//        self.loadMessages()
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(loadMessages), userInfo: nil, repeats: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let offset = self.chatTableView.contentSize.height - self.chatTableView.bounds.height
+        self.chatTableView.setContentOffset(CGPoint(x: 0, y: offset), animated: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,20 +36,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func loadMessages(){
         let query = PFQuery(className: "Message")
-        query.order(byAscending: "createdAt")
+        query.order(byDescending: "createdAt")
+        query.includeKey("user")
         query.findObjectsInBackground { (messages: [PFObject]?, error: Error?) in
             if let chatMessages = messages{
-//                print(chatMessages)
-                for message in chatMessages{
-//                    print(message)
-                    if let text = message.object(forKey: "text") as? String{
-//                        print(text)
-                        self.chat.append(text)
-                    }else{
-                        print("text key not found")
-                    }
-                }
+                self.chat.removeAll()
+                self.chat.append(contentsOf: chatMessages)
                 self.chatTableView.reloadData()
+                let offset = self.chatTableView.contentSize.height - self.chatTableView.bounds.height
+                self.chatTableView.setContentOffset(CGPoint(x: 0, y: offset), animated: false)
             }else{
                 print(error.debugDescription)
             }
@@ -63,8 +64,20 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
+        
         if !self.chat.isEmpty{
-            cell.messageLabel.text = self.chat[indexPath.row]
+            let totalMessages = self.chat.count
+            let message = self.chat[totalMessages - 1 - indexPath.row]
+            if let text = message["text"] as? String{
+                cell.messageLabel.text = text
+            }
+            
+            if let fromUser = message["user"] as? PFUser{
+                cell.usernameLabel.isHidden = false
+                cell.usernameLabel.text = "@\(fromUser.username!):"
+            }else{
+                cell.usernameLabel.isHidden = true
+            }
         }
         return cell
     }
@@ -81,11 +94,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let message = PFObject(className: "Message")
         message["text"] = self.newMessageTextView.text
+        message["user"] = PFUser.current()
         message.saveInBackground { (success: Bool, error: Error?) in
             if success{
                 print("new message save successfully")
+                self.chat.append(message)
+                self.newMessageTextView.text.removeAll()
             }else{
-                print(error?.localizedDescription)
+                if let error = error{
+                    print(error.localizedDescription)
+                }
             }
         }
     }
