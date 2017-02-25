@@ -20,7 +20,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         self.setupNavigationBar()
         self.setupTableView()
-//        self.loadMessages()
+        self.loadMessages()
         Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(loadMessages), userInfo: nil, repeats: true)
     }
     
@@ -99,6 +99,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             if success{
                 print("new message save successfully")
                 self.chat.append(message)
+                self.chatTableView.reloadData()
                 self.newMessageTextView.text.removeAll()
             }else{
                 if let error = error{
